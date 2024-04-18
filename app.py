@@ -449,7 +449,7 @@ def mask_and_predict(image, model, metadata, device):
     return pil_image, pred_class_name, output, pred_index, max_prob
 
 
-fusion_model.load_state_dict(torch.load('best_model_65.pth', map_location='cpu'))
+fusion_model.load_state_dict(torch.load('saved_models/fixcaps_final.pth', map_location='cpu'))
 fusion_model.to(device)
 fusion_model.eval()  
 
