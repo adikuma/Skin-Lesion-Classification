@@ -1,7 +1,5 @@
 # Skin Lesion Classification
 
-# Skin Lesion Classifier
-
 ## Problem Statement
 
 The primary challenge addressed in this project is the development of an automated and reliable system to identify the presence or absence of skin cancer in individuals using limited information. The goal is to enhance early skin cancer detection capabilities amongst the general population using a predictive model that can accurately determine whether an individual is healthy or has potential skin cancer from an uploaded image of a suspected skin lesion.
@@ -24,16 +22,15 @@ This application utilizes machine learning models to analyze skin lesions and pr
 
 **Clone the Repository:**
 
-    ```bash
+ ```bash
     git clone <repository-url>
-    ```
+ ```
 
-4. **Run the Application:**
+**Run the Application:**
+Use the following command to start the application:
 
-    Use the following command to start the application:
-
-    ```bash
+```bash
     streamlit run app.py
-    ```
+```
 
-    This will start the Streamlit server, and you should be able to access the application by navigating to `localhost:8501` in your web browser.
+This will start the Streamlit server, and you should be able to access the application by navigating to `localhost:8501` in your web browser.
