@@ -33,7 +33,7 @@ The CapsNet then has two outputs:
 
 The specifics of the network, including the number and size of layers, will be determined during evaluation. 
 
-![Fixcaps Model Architecutre](https://github.com/adikuma/Skin-Lesion-Classification/fixcaps.jpg?raw=true)
+![FixCaps Model Architecture](https://github.com/adikuma/Skin-Lesion-Classification/blob/main/fixcaps.jpg?raw=true)
 
 ### Fusion Model
 
