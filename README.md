@@ -1,5 +1,4 @@
 # Skin Lesion Classification 
-[Report](https://github.com/adikuma/Skin-Lesion-Classification/raw/main/ADL Final Report.pdf)
 
 ## Motivation
 
