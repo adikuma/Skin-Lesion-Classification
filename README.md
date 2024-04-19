@@ -1,29 +1,73 @@
 # Skin Lesion Classification
 
+## Motivation
+
+The primary motivation for this project is to enhance early skin cancer detection capabilities amongst the general population. Skin cancer is one of the most common cancer types globally, and early detection of this can significantly increase the chances of successful treatment for patients. Traditional methods for skin cancer diagnosis such as visual examinations, biopsy and histopathological analysis, are all effective but costly and time-consuming. By leveraging machine learning technologies to analyze skin lesions, we can provide a faster, more accessible preliminary diagnostic tool. 
+
 ## Problem Statement
 
-The primary challenge addressed in this project is the development of an automated and reliable system to identify the presence or absence of skin cancer in individuals using limited information. The goal is to enhance early skin cancer detection capabilities amongst the general population using a predictive model that can accurately determine whether an individual is healthy or has potential skin cancer from an uploaded image of a suspected skin lesion.
+How might we develop an automated and reliable system to identify the presence or absence of skin cancer in individuals using limited information?
+
+##	Dataset
+
+The dataset utilized is the HAM10000 dataset, sourced from Harvard Dataverse. Selecting the appropriate dataset has a large impact on how the model actually performs, as it fundamentally influences the model's predictive accuracy. The following details about the dataset are as follows:
+
+1.	Images: The dataset comprises 10,015 dermatoscopic images. All images are of different pixel sizes and are predominantly in JPEG format. This format is commonly used in medical image datasets due to its balance of quality and file size.
+2.	Demographics: The images are gathered from skin cancer clinics worldwide, including Austria, Australia, and the United States. The patients featured in the dataset do not belong to any specific age group, but are mostly Caucasian in terms of skin type. This lack of diversity will affect the overall data that the model is exposed to, and thereby negatively impact its accuracy.
+3.	Metadata: Each image is annotated with details such as the type of skin lesion, the bodily location of the lesion, and the patient's age and gender
+
+## Models
+
+### Capsule Neural Network
+
+The Capsule Neural Network (CapsNet) then receives the pre-processed image tensor as input. 
+
+In the early phases of this research, we initially focused on using a convolutional neural network (CNN). However, upon testing various models and conducting further research, we decided to adopt a more exploratory approach by utilizing the less common CapsNet architecture instead. 
+
+Unlike CNNs, CapsNet processes information using a hierarchical grouping of neurons known as "capsules." These capsules are designed to encode and preserve spatial hierarchies between features, allowing the network to recognize objects and their variations with better generalization. Hence, it would theoretically work better than regular CNNs in tasks such as image classification. (Mensah, Adekoya, Ayidzoe, & Edward, 2022).
+
+The CapsNet then has two outputs:
+
+1.	A tensor that assigns classification scores to each of the 7 types of skin lesions from the dataset, reflecting the probability of each possible diagnosis. 
+2.	A feature map output used for visual explanations via Grad-CAM.
+
+The specifics of the network, including the number and size of layers, will be determined during evaluation. 
+
+### Fusion Model
+
+We have conducted a hypothesis that we can further enhance the accuracy of our CapsNet model if we were to add in the metadata context of the image. Hence, we have developed a custom fusion model that integrates data from two distinct sources: the CapsNet model and the MetadataModel class.
+
+The following is the general structure of the fusion model:
+
+1.	Feature Extraction: The model extracts relevant features from the primary output of the CapsNet model.
+2.	Metadata Feature Extraction: It also extracts relevant features from the MetadataModel.
+3.	Feature Combination: The extracted features from both sources are then combined into a single feature set.
+4.	Classification: This combined feature set is processed through an AdvancedClassifier model.
+
+The AdvancedClassifier is a neural network designed to integrate and classify input data effectively. The following describes how the overall structure operates:
+
+1.	The classifier expands the input into a higher dimensional space, followed by a ReLU activation to introduce non-linearity. Furthermore, a dropout is used in order to prevent overfitting.
+2.	A residual connection is used to add the original input directly to the output of the later layers, helping to preserve possible lost information described by the vanishing gradient problem.
+3.	The final layer maps the processed features into class logits, representing the prediction scores of the various classes.
+
+The fusion model then has two outputs:
+
+1.	The class logits returned by the final layer of the AdvancedClassifier.
+2.	The feature map from the CapsNet model’s secondary output.
+
+Output Processor
+The output processor module handles the conversion of the two outputs from the Fusion model into a user-friendly format. 
 
 ## About The Application
 
 This application utilizes machine learning models to analyze skin lesions and predict potential skin cancer types. The models can classify skin lesions into several types based on the image appearance and provide a heatmap overlay for better insight. It leverages a Streamlit framework for easy use and interaction.
-
-## Models
-
-### FixCaps Model
-
-- **Fixed Capsule Network (FixCaps):** A novel approach that encodes spatial hierarchies between features, enhancing the model’s ability to interpret complex medical images with an accuracy potential of 96.49%.
-
-### Fusion Model
-
-- **Fusion Model:** Integrates the outputs from the FixCaps model with metadata inputs to potentially enhance diagnostic accuracy, though it demonstrated weaker results in trials.
 
 ## Running the Application
 
 **Clone the Repository:**
 
  ```bash
-    git clone <repository-url>
+    git clone https://github.com/adikuma/Skin-Lesion-Classification.git
  ```
 
 **Run the Application:**
