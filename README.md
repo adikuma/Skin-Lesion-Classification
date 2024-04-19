@@ -62,6 +62,18 @@ The output processor module handles the conversion of the two outputs from the F
 
 ![FixCaps Model Architecture](https://github.com/adikuma/Skin-Lesion-Classification/blob/main/fusion.jpg?raw=true)
 
+## Repository
+
+### Structure
+
+- **`/work`:** Contains all the files and scripts that were developed and tested using Google Colab. Files in this folder may require minor adjustments for local execution.
+- **`/evaluation`:** Stores the evaluation results and metrics computed from the models.
+- **`app.py`:** The main application script located in the root directory of the repository.
+
+### Execution Environment
+
+The project was developed and run on Google Colab, so some environment-specific adjustments might be necessary for local execution, such as package installations or file path configurations.
+
 ## About The Application
 
 This application utilizes machine learning models to analyze skin lesions and predict potential skin cancer types. The models can classify skin lesions into several types based on the image appearance and provide a heatmap overlay for better insight. It leverages a Streamlit framework for easy use and interaction.
