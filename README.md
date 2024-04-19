@@ -33,6 +33,8 @@ The CapsNet then has two outputs:
 
 The specifics of the network, including the number and size of layers, will be determined during evaluation. 
 
+![Fixcaps Model Architecutre](https://github.com/adikuma/Skin-Lesion-Classification/blob/fixcaps.jpg?raw=true)
+
 ### Fusion Model
 
 We have conducted a hypothesis that we can further enhance the accuracy of our CapsNet model if we were to add in the metadata context of the image. Hence, we have developed a custom fusion model that integrates data from two distinct sources: the CapsNet model and the MetadataModel class.
