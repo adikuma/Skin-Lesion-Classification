@@ -60,7 +60,7 @@ The fusion model then has two outputs:
 Output Processor
 The output processor module handles the conversion of the two outputs from the Fusion model into a user-friendly format. 
 
-![FixCaps Model Architecture](https://github.com/adikuma/Skin-Lesion-Classification/blob/main/fusion_model.jpg?raw=true)
+![FixCaps Model Architecture](https://github.com/adikuma/Skin-Lesion-Classification/blob/main/fusion_model.png?raw=true)
 
 ## About The Application
 
