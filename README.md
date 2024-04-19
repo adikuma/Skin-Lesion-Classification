@@ -60,6 +60,8 @@ The fusion model then has two outputs:
 Output Processor
 The output processor module handles the conversion of the two outputs from the Fusion model into a user-friendly format. 
 
+![FixCaps Model Architecture](https://github.com/adikuma/Skin-Lesion-Classification/blob/main/fusion_model.jpg?raw=true)
+
 ## About The Application
 
 This application utilizes machine learning models to analyze skin lesions and predict potential skin cancer types. The models can classify skin lesions into several types based on the image appearance and provide a heatmap overlay for better insight. It leverages a Streamlit framework for easy use and interaction.
